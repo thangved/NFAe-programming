@@ -27,7 +27,7 @@ class NFA:
     def goto_initial_state(self):
         self.current_state = self.start_state
 
-    def run_with_input_list(self, input_list: str, on_error: lambda e: None = lambda x: x):
+    def run_with_input_list(self, input_list: str, on_error=lambda: None):
         self.goto_initial_state()
 
         current_states = set()
