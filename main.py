@@ -63,7 +63,7 @@ class GUI:
     def config_title(self):
         Label(
             self.frame, text='NFAε Programing', bg=COLOR_PRIMARY,
-            fg=COLOR_WHITE, pady=10, width=WINDOW_INIT_WIDTH, font=('Arial', 17)
+            fg=COLOR_WHITE, pady=10, width=WINDOW_INIT_WIDTH, font=('Ubuntu', 17)
         ).pack(side=TOP)
 
     def config_open_file_button(self):
