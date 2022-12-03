@@ -56,20 +56,20 @@ class NFA:
     def eCLOSURE(self, state):
         result = set()
 
-        stack = []
-        stack.append(state)
+        s = []
+        s.append(state)
 
-        while stack:
-            top = stack.pop()
+        while s:
+            top = s.pop()
             if top in result:
                 continue
 
             result |= {top}
 
             if (top, EPSILON) in self.transition_function.keys():
-                res = self.transition_function[(top, '"')]
+                res = self.transition_function[(top, EPSILON)]
                 for e in res:
-                    stack.append(e)
+                    s.append(e)
 
         return result
 
