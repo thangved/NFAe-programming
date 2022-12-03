@@ -11,7 +11,7 @@ class NFA:
         self.start_state = start_state
         self.accept_states = accept_states
 
-    def transition_with_input(self, current_state: set, input_value):
+    def transition_with_input(self, current_state: set, input_value: str):
         result = set()
         for item in current_state:
             if (item, input_value) not in self.transition_function.keys():
@@ -27,7 +27,7 @@ class NFA:
     def goto_initial_state(self):
         self.current_state = self.start_state
 
-    def run_with_input_list(self, input_list: str, on_error: lambda e: None):
+    def run_with_input_list(self, input_list: str, on_error: lambda e: None = lambda x: x):
         self.goto_initial_state()
 
         current_states = set()
