@@ -1,4 +1,4 @@
-EPSILON = '"'
+EPSILON = 'ε'
 
 
 class NFA:

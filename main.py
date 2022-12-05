@@ -1,6 +1,9 @@
 from tkinter import *
 from tkinter import messagebox, filedialog
 
+import networkx as nx
+import matplotlib.pyplot as plt
+
 from classes.nfa import NFA
 from constants import *
 
@@ -32,6 +35,9 @@ class GUI:
         self.config_open_file_button()
         self.config_list()
         self.config_test()
+
+        Button(self.frame, text='Hiện sơ đồ chuyển',
+               command=self.show_graph, padx=10, pady=10, bg=COLOR_PRIMARY, fg=COLOR_WHITE, borderwidth=0).pack()
 
         self.config_window()
 
@@ -199,7 +205,6 @@ class GUI:
             show = messagebox.showwarning
 
         show(title=CHECK_STR, message=message)
-        pass
 
     def update_lists(self):
 
@@ -221,6 +226,37 @@ class GUI:
 
         for item in data:
             listbox.insert(0, get_data(item))
+
+    def show_graph(self):
+
+        if not self.nfa:
+            return messagebox.showerror(title=ERROR, message=PLEASE_IMPORT_FA)
+
+        edges_labels = dict()
+
+        for fn in self.nfa.transition_function.keys():
+            for v in self.nfa.transition_function[fn]:
+                edges_labels[(fn[0], v)] = fn[1]
+
+        G = nx.MultiDiGraph(multigraph_input=True)
+        G.add_edges_from(edges_labels.keys())
+
+        NODE_SIZE = 1000
+
+        pos = nx.circular_layout(G)
+
+        nx.draw_networkx_nodes(G, pos, node_size=NODE_SIZE,
+                               node_color='w', edgecolors='k')
+        nx.draw_networkx_labels(G, pos, font_color='k')
+
+        nx.draw_networkx_edges(
+            G, pos, edgelist=edges_labels.keys(), arrows=True, node_size=NODE_SIZE, arrowsize=20)
+
+        nx.draw_networkx_edge_labels(
+            G, pos, edge_labels=edges_labels, font_color='k', rotate=False)
+
+        plt.title("Sơ đồ chuyển")
+        plt.show()
 
 
 if __name__ == "__main__":

@@ -20,14 +20,14 @@ FORMAT_FILE_MESSAGE = """File văn bản gồm các dòng sau:
         - Ký tự thứ 2 là nhãn
         - Các ký tự còn lại là tập các trạng thái khi đọc vào nhãn
 
-Ghi chú: Ký hiệu """ + EPSILON + """thay thế cho epsilon
+Ghi chú: Ký hiệu """ + EPSILON + """ thay thế cho epsilon
 """
 
 READ_FILE_ERROR = "Lỗi đọc file"
 FILE_NOT_MATCH_FORMAT = "File của bạn đã mở không đúng định dạng"
 
 CANNOT_TEST = "Không thể thực hiện kiểm tra"
-PLEASE_IMPORT_FA = "Vui lòng nhập văn phạm trước khi kiểm tra chuỗi"
+PLEASE_IMPORT_FA = "Vui lòng nhập văn phạm trước khi thực hiện hành động này"
 
 ERROR = "Lỗi"
 
@@ -46,5 +46,5 @@ CHECK = "Kiểm tra"
 SELECT_FILE_TO_IMPORT_FA = "Chọn file để nhập văn phạm"
 
 WINDOW_INIT_WIDTH = 800
-WINDOW_INIT_HEIGHT = 600
+WINDOW_INIT_HEIGHT = 630
 WINDOW_RESOLUTION = str(WINDOW_INIT_WIDTH) + 'x' + str(WINDOW_INIT_HEIGHT)
