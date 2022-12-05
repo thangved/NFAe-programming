@@ -13,3 +13,6 @@ pip install -r requirements.txt
 ```sh
 python3 main.py
 ```
+
+[Github](https://github.com/thangved/NFAe-programming.git)
+
