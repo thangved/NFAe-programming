@@ -255,9 +255,6 @@ class GUI:
         nx.draw_networkx_edges(
             G, pos, edgelist=edges_labels.keys(), arrows=True, node_size=NODE_SIZE, arrowsize=20)
 
-        # nx.draw_networkx_edge_labels(
-        #     G, pos, edge_labels=edges_labels, font_color='k', rotate=False)
-
         for edge in G.edges():
             x1, y1 = pos[edge[0]]
             x2, y2 = pos[edge[1]]
