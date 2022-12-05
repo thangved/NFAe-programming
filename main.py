@@ -238,7 +238,7 @@ class GUI:
             for v in self.nfa.transition_function[fn]:
                 edges_labels[(fn[0], v)] = fn[1]
 
-        G = nx.MultiDiGraph(multigraph_input=True)
+        G = nx.DiGraph(multigraph_input=True)
         G.add_edges_from(edges_labels.keys())
 
         NODE_SIZE = 1000
