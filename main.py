@@ -252,10 +252,23 @@ class GUI:
         nx.draw_networkx_edges(
             G, pos, edgelist=edges_labels.keys(), arrows=True, node_size=NODE_SIZE, arrowsize=20)
 
-        nx.draw_networkx_edge_labels(
-            G, pos, edge_labels=edges_labels, font_color='k', rotate=False)
+        # nx.draw_networkx_edge_labels(
+        #     G, pos, edge_labels=edges_labels, font_color='k', rotate=False)
+
+        for edge in G.edges():
+            x1, y1 = pos[edge[0]]
+            x2, y2 = pos[edge[1]]
+
+            (x, y) = (x1 * 0.5 + x2 * (1.0 - 0.5), y1 * 0.5 + y2 * (1.0 - 0.5))
+
+            if x1 == x2 and y1 == y2:
+                y += .3
+
+            plt.text(x, y, edges_labels[edge], bbox=dict(
+                facecolor='white', linewidth=0), horizontalalignment='center')
 
         plt.title("Sơ đồ chuyển")
+        plt.axis('off')
         plt.show()
 
 
