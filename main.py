@@ -176,7 +176,10 @@ class GUI:
                 label = func[1]
                 func.pop(0)
                 func.pop(0)
-                tf[(state, label)] = set(func)
+                if (state, label) in tf.keys():
+                    tf[(state, label)] |= set(func)
+                else:
+                    tf[(state, label)] = set(func)
 
             self.nfa = NFA(states, alphabet, tf, start_state, accept_states)
             self.update_lists()
